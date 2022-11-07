@@ -1,14 +1,15 @@
 package org.campus02.thenewsocialmedia;
 
-public class MayBeCreditCardNumber {
+public class MayBe<X> {
     //Vielleicht darf ich Nummer ausgeben
 
-    private String creditCardNumber;
+    private X value;   //
     private AccessRoles neededAccessRole;
 
-    public MayBeCreditCardNumber(String creditCardNumber) {  //Konstruktor
-        this.creditCardNumber = creditCardNumber;
-        this.neededAccessRole = AccessRoles.ExternalUser;  //jeder darf Nr. sehen
+    public MayBe(X value) {  //Konstruktor
+        this.value = value;
+        // (X obj = new X(); -- DARF ICH NICHT !!! - zusatz Wissen)
+       // this.neededAccessRole = AccessRoles.ExternalUser;  //jeder darf Nr. sehen
     }
 
     public void deliverValue(AccessRoles accesser){  //accesser = wer gerade auf Profil zugreift
@@ -37,7 +38,7 @@ public class MayBeCreditCardNumber {
         switch (accesser) {
             case Platform:
             case Self:                     //AccessRoles.Self !!
-                System.out.println(creditCardNumber);
+                System.out.println(value);
                 break;
             case ExternalUser:
             case RegisteredCustomer:
